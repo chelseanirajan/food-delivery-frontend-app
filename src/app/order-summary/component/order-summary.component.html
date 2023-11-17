@@ -1,0 +1,36 @@
+<body>
+  <div class="container">
+    <h1 class="header">Order Summary</h1>
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Food Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of this.orderSummary?.foodItemList">
+          <td>{{ food.itemName }}</td>
+          <td>{{ food.quantity }}</td>
+          <td>${{ food.price }}</td>
+        </tr>
+        <!-- Add more items here -->
+        <tr class="total-row">
+          <td colspan="2">Total</td>
+          <td>{{ total }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="place-order-btn" (click)="showDialog()">Place Order</button>
+  </div>
+
+  <div *ngIf="isDialog" class="dialog">
+    <div class="dialog-content">
+      <!-- <span class="close" (click)="hideDialog()">&times;</span> -->
+      <h2>Order Placed!</h2>
+      <p>Order placed successfully!</p>
+      <button (click)="hideDialog()">Close</button>
+    </div>
+  </div>
+</body>

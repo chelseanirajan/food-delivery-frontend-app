@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="header">
+    <div class="restaurant-name">{{ foodItemResponse.restaurant?.name }}</div>
+    <button class="checkout-button" (click)="onCheckout()">Checkout</button>
+  </div>
+
+  <div class="description">
+    <p>
+      {{ foodItemResponse.restaurant?.description }}
+    </p>
+  </div>
+  <div class="menu-title">Food Menu</div>
+
+  <div class="food-menu">
+    <div class="food-item" *ngFor="let food of foodItemResponse?.foodItemList">
+      <div class="food-item-name">{{ food.itemName }}</div>
+      <div class="food-item-price">{{ food.price }}</div>
+      <div class="quantity-controls">
+        <button
+          class="quantity-button"
+          *ngIf="'food.quantity < 1?true: false'"
+          (click)="onDecrement(food)"
+        >
+          -
+        </button>
+        <span>{{ food.quantity }}</span>
+        <button class="quantity-button" (click)="onIncrement(food)">+</button>
+      </div>
+    </div>
+
+    <!-- Add more food items as needed -->
+  </div>
+</div>
